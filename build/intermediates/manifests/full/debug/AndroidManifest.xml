@@ -1,0 +1,496 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ Copyright (C) 2013 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<!--
+ Declare the contents of this Android application.  The namespace
+     attribute brings in the Android platform namespace, and the package
+     supplies a unique name for the application.  When writing your
+     own application, the package name must be changed from "com.example.*"
+     to come from a domain that you own or have control over.
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.android.supportv7" >
+
+    <uses-sdk
+        android:minSdkVersion="7"
+        android:targetSdkVersion="21" />
+    <!--
+         Permission for INTERNET is required for streaming video content
+         from the web, it's not required otherwise.
+    -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!--
+         Permission for SYSTEM_ALERT_WINDOW is only required for emulating
+         remote display using system alert window.
+    -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <!--
+         Permission for READ_EXTERNAL_STORAGE is explicitly required for
+         reading images from the media store from API v19+.
+    -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <!--
+         The smallest screen this app works on is a phone.  The app will
+         scale its UI to larger screens but doesn't make good use of them
+         so allow the compatibility mode button to be shown (mostly because
+         this is just convenient for testing).
+    -->
+    <supports-screens
+        android:compatibleWidthLimitDp="480"
+        android:requiresSmallestWidthDp="320" />
+
+    <application
+        android:hardwareAccelerated="true"
+        android:icon="@drawable/app_sample_code"
+        android:label="@string/activity_sample_code"
+        android:supportsRtl="true" >
+        <activity android:name="com.example.android.supportv7.Support7Demos" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <receiver android:name="com.example.android.supportv7.media.SampleMediaButtonReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.MEDIA_BUTTON" />
+            </intent-filter>
+        </receiver>
+        <!-- MediaRouter Support Samples -->
+
+        <activity
+            android:name="com.example.android.supportv7.media.SampleMediaRouterActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/sample_media_router_activity_dark"
+            android:theme="@style/Theme.SampleMediaRouter" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.example.android.supportv7.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.android.supportv7.media.SampleMediaRouterActivity$Light"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/sample_media_router_activity_light"
+            android:theme="@style/Theme.SampleMediaRouter.Light" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.example.android.supportv7.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.android.supportv7.media.SampleMediaRouterActivity$LightWithDarkActionBar"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/sample_media_router_activity_light_with_dark_action_bar"
+            android:theme="@style/Theme.SampleMediaRouter.Light.DarkActionBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.example.android.supportv7.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.android.supportv7.media.SampleMediaRouteSettingsActivity"
+            android:label="@string/sample_media_route_settings_activity"
+            android:theme="@style/Theme.AppCompat.Light" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name="com.example.android.supportv7.media.SampleMediaRouteProviderService"
+            android:label="@string/sample_media_route_provider_service"
+            android:process=":mrp" >
+            <intent-filter>
+                <action android:name="android.media.MediaRouteProviderService" />
+            </intent-filter>
+        </service>
+
+        <!-- GridLayout Support Samples -->
+
+        <activity
+            android:name="com.example.android.supportv7.view.GridLayout1"
+            android:label="@string/grid_layout_1" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.example.android.supportv7.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.android.supportv7.view.GridLayout2"
+            android:label="@string/grid_layout_2" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.example.android.supportv7.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.android.supportv7.view.GridLayout3"
+            android:label="@string/grid_layout_3" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.example.android.supportv7.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+
+        <!-- Action Bar Samples -->
+        <activity
+            android:name="com.example.android.supportv7.app.ActionBarMechanics"
+            android:label="@string/action_bar_mechanics"
+            android:theme="@style/Theme.AppCompat" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.example.android.supportv7.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.example.android.supportv7.app.SearchActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+        </activity>
+        <activity
+            android:name="com.example.android.supportv7.app.ActionBarUsage"
+            android:label="@string/action_bar_usage"
+            android:theme="@style/Theme.AppCompat" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.example.android.supportv7.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.android.supportv7.app.ActionBarDisplayOptions"
+            android:label="@string/action_bar_display_options"
+            android:logo="@drawable/apidemo_androidlogo"
+            android:theme="@style/Theme.AppCompat" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.example.android.supportv7.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.android.supportv7.app.ActionBarTabs"
+            android:label="@string/action_bar_tabs"
+            android:theme="@style/Theme.Custom" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.example.android.supportv7.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.android.supportv7.app.ActionBarSettingsActionProviderActivity"
+            android:label="@string/action_bar_settings_action_provider"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.example.android.supportv7.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.android.supportv7.app.ActionBarFragmentMenu"
+            android:label="@string/action_bar_fragment_menu"
+            android:theme="@style/Theme.AppCompat" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.example.android.supportv7.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.android.supportv7.app.ActionBarWithDrawerLayout"
+            android:label="@string/action_bar_with_navigation_drawer"
+            android:theme="@style/Theme.AppCompat" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.example.android.supportv7.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.android.supportv7.app.ActionBarPreferences"
+            android:label="@string/action_bar_preferences"
+            android:theme="@style/Theme.AppCompat" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.example.android.supportv7.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.android.supportv7.app.ActionBarActionMode"
+            android:label="@string/action_bar_action_mode"
+            android:theme="@style/Theme.Custom" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.example.android.supportv7.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.android.supportv7.app.ActionBarHideOnScroll"
+            android:label="@string/action_bar_hide_scroll"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.example.android.supportv7.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.android.supportv7.app.AppCompatWidgetsButtons"
+            android:label="@string/appcompat_widgets_buttons"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.example.android.supportv7.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.android.supportv7.app.AppCompatWidgetsSpinners"
+            android:label="@string/appcompat_widgets_spinners"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.example.android.supportv7.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.android.supportv7.app.AppCompatWidgetsTextInput"
+            android:label="@string/appcompat_widgets_text_input"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.example.android.supportv7.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.android.supportv7.app.ToolbarUsage"
+            android:label="@string/toolbar_usage"
+            android:theme="@style/Theme.Custom.NoActionBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.example.android.supportv7.SAMPLE_CODE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.default_searchable"
+                android:value=".app.SearchActivity" />
+        </activity>
+        <activity
+            android:name="com.example.android.supportv7.app.ToolbarDisplayOptions"
+            android:label="@string/toolbar_display_options"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.example.android.supportv7.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.android.supportv7.app.ToolbarFragmentPagerMenu"
+            android:label="@string/toolbar_fragment_pager"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.example.android.supportv7.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.android.supportv7.app.ToolbarActionMode"
+            android:label="@string/toolbar_action_mode"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.example.android.supportv7.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.android.supportv7.app.DialogUsage"
+            android:label="@string/dialog_usage"
+            android:theme="@style/Theme.AppCompat.Light" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.example.android.supportv7.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.android.supportv7.app.AlertDialogUsage"
+            android:label="@string/alert_dialog_usage"
+            android:theme="@style/Theme.AppCompat.Light" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.example.android.supportv7.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.android.supportv7.app.DialogFragmentUsage"
+            android:label="@string/dialogfragment_usage"
+            android:theme="@style/Theme.AppCompat.Light" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.example.android.supportv7.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+
+        <provider
+            android:name="com.example.android.supportv7.app.RecentSuggestionsProvider"
+            android:authorities="com.example.android.supportv7.RecentSuggestionsProvider" />
+
+        <!-- RecyclerView samples -->
+        <activity
+            android:name="com.example.android.supportv7.widget.RecyclerViewActivity"
+            android:label="@string/recycler_view"
+            android:theme="@style/Theme.AppCompat" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.example.android.supportv7.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.android.supportv7.widget.AnimatedRecyclerView"
+            android:label="@string/animated_recycler_view"
+            android:theme="@style/Theme.AppCompat" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.example.android.supportv7.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.android.supportv7.widget.LinearLayoutManagerActivity"
+            android:label="@string/linear_layout_manager"
+            android:theme="@style/Theme.AppCompat" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.example.android.supportv7.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.android.supportv7.util.SortedListActivity"
+            android:label="@string/sorted_list_activity"
+            android:theme="@style/Theme.AppCompat"
+            android:windowSoftInputMode="adjustResize" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.example.android.supportv7.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.android.supportv7.widget.GridLayoutManagerActivity"
+            android:label="@string/grid_layout_manager"
+            android:theme="@style/Theme.AppCompat" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.example.android.supportv7.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.android.supportv7.widget.StaggeredGridLayoutManagerActivity"
+            android:label="@string/staggered_grid_layout_manager"
+            android:theme="@style/Theme.AppCompat" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.example.android.supportv7.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.android.supportv7.widget.AsyncListUtilActivity"
+            android:label="@string/async_list_util"
+            android:theme="@style/Theme.AppCompat" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.example.android.supportv7.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.android.supportv7.view.CardViewActivity"
+            android:label="@string/card_view"
+            android:theme="@style/Theme.AppCompat" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.example.android.supportv7.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.android.supportv7.graphics.PaletteActivity"
+            android:label="@string/palette"
+            android:theme="@style/Theme.AppCompat" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.example.android.supportv7.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.android.supportv7.graphics.PaletteDetailActivity"
+            android:label="@string/palette"
+            android:theme="@style/Theme.AppCompat" />
+
+        <!-- item touch helper demo activities -->
+        <activity
+            android:name="com.example.android.supportv7.widget.touch.SwipeToDismissActivity"
+            android:label="@string/swipe_to_dismiss_activity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.example.android.supportv7.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.android.supportv7.widget.touch.DragAndDropActivity"
+            android:label="@string/drag_and_drop_activity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.example.android.supportv7.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
