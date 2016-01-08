@@ -195,6 +195,7 @@ public class PaletteActivity extends AppCompatActivity {
                 view.findViewById(R.id.text_light_vibrant).setBackgroundDrawable(null);
                 view.findViewById(R.id.text_light_muted).setBackgroundDrawable(null);
                 view.findViewById(R.id.text_dark_vibrant).setBackgroundDrawable(null);
+
                 view.findViewById(R.id.text_dark_muted).setBackgroundDrawable(null);
 
                 final long id = cursor.getLong(
